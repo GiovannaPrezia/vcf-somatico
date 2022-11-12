@@ -53,11 +53,14 @@ import csv
 !tar -zxvf 105.0.tar.gz
 ```
   _5. Utilizar cd para entrar no diretório do VEP e INSTALL.pl para instalar_
+  
 ```
 !cd ensembl-vep-105.0
 ./INSTALL.pl --NO_UPDATE
 ```
+
 - *Agora para você rodar pode executar todos em uma mesma barra!*
+
 ```
 %%bash
 sudo apt install unzip curl git libmodule-build-perl libdbi-perl libdbd-mysql-perl build-essential zlib1g-dev
@@ -66,10 +69,14 @@ tar -zxvf 105.0.tar.gz
 cd ensembl-vep-105.0
 ./INSTALL.pl --NO_UPDATE 
 ```
-- *Para verificar se tudo deu certo digite:
+
+- *Para verificar se tudo deu certo digite:*
+
+```
 %%bash
 cd ensembl-vep-105.0
 ./vep
+```
 
 ## 🧬Trabalhando com o VCF
 Agora vamos usar um VCF como exemplo. 
