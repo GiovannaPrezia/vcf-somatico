@@ -1,4 +1,4 @@
-# ⚙Anotação de VCF somático utilizando VEP-esembl 105.0⚙
+# ⚙ Anotação de VCF somático utilizando VEP-esembl 105.0 ⚙
 Script passo-a-passo para anotação de variantes de um arquivo VCF através da ferramenta _Ensembl Variant Effect Predictor_ (VEP). 
 
 Tópicos:
@@ -17,7 +17,7 @@ Antes de mais nada, para o desenvolvimento de uma pipeline é necessário que se
 - Nomeie o título do seu arquivo onde está escrito *Untitled2.ipynb* e em seguida você já pode começar o script!
 
 ## 🚶‍♂️ Primeiros Passos
-  _1. Preparo inicial_ - Importe seu drive no Colab para localização e gerenciamento dos dados escrevendo na barra de trabalho (Terminal):
+_1. Preparo inicial_ - Importe seu drive no Colab para localização e gerenciamento dos dados escrevendo na barra de trabalho (Terminal):
 ```
 from google.colab import drive
 drive.mount('/content/drive')
@@ -84,4 +84,6 @@ Agora vamos usar um VCF como exemplo.
 mkdir dados_vcf
 mv WP312.filtered.vcf.gz. /content/dados_vcf
 ````
-## 
+## 📝Anotando as variantes
+Tudo alinhado, vamos as anotações
+
