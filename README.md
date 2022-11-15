@@ -23,11 +23,11 @@ Antes de mais nada, para o desenvolvimento de uma pipeline é necessário que se
 from google.colab import drive
 drive.mount('/content/drive')
 ```
- _2. Verificação do local_ - Para que o Colab saiba onde está trabalhando utilize o código pwd:
+ _2. Verificação do local_ - Para que o Colab saiba onde está trabalhando utilize o código `pwd`:
 ```
 !pwd
   ```
- _3. Resultado_ - O terminal deve apresentar como resultado do último código como /content:
+ _3. Resultado_ - O terminal deve apresentar como resultado do último código como `/content`:
 
 ![image](https://user-images.githubusercontent.com/99352577/202039441-2901185f-55da-4114-a4f2-2868e3bfe1f3.png)
 
@@ -39,23 +39,23 @@ Agora vamos começar baixando os arquivos necessários! Entenda os processos:
 import pandas as pd
 import csv
 ```
- _2. Instalando pacotes para execução do VEP usando o código apt install:_
+ _2. Instalando pacotes para execução do VEP usando o código `apt install`:_
 
 ```
 !sudo apt install unzip curl git libmodule-build-perl libdbi-perl libdbd-mysql-perl build-essential zlib1g-dev
 
 ```
 
- _3. Download do VEP utilizando o código wget:_
+ _3. Download do VEP utilizando o código `wget`:_
   
 ```
 !wget -c https://github.com/Ensembl/ensembl-vep/archive/refs/tags/105.0.tar.gz
 ```
- _4. Descompactando os arquivos tar.gz:_
+ _4. Descompactando os arquivos `tar.gz`:_
 ```
 !tar -zxvf 105.0.tar.gz
 ```
- _5. Utilizar cd para entrar no diretório do VEP e INSTALL.pl para instalar:_
+ _5. Utilizar cd para entrar no diretório do VEP e `INSTALL.pl` para instalar:_
   
 ```
 !cd ensembl-vep-105.0
@@ -92,16 +92,16 @@ O Colab salva seus arquivos em seu próprio disco, a partir desse momento ele de
 ## 🧬Baixando o arquivo VCF
 Agora vamos usar um VCF como exemplo. 
 
-  _1.Baixe o arquivo *WP312.filtered.vcf.gz.* no Colab:_
+  _1.Baixe o arquivo `WP312.filtered.vcf.gz.` no Colab:_
 
 ![image](https://user-images.githubusercontent.com/99352577/202040401-5eb872d4-664c-4f62-8df3-7931dfb2a083.png)
 
-  _2.Crie um diretório e transfira o arquivo para ele:_
+  _2.Crie um diretório com o comando `mkdir` e transfira o arquivo para ele:_
 ```
 %%bash
 mkdir dados_vcf
 ````
-  _3. Mova o arquivo VCF para o diretório criado, apenas para organização dos dados:_
+  _3. Mova o arquivo VCF para o diretório criado utilizando o comando `mv`, apenas para organização dos dados:_
 ````
 !mv /content/WP312.filtered.vcf.gz /content/dados_vcf
 ````
