@@ -2,10 +2,12 @@
 Script passo-a-passo para anotação de variantes de um arquivo VCF através da ferramenta _Ensembl Variant Effect Predictor_ (VEP). 
 
 Tópicos:
-- [Introdução](##Introdução)
-- [Criação de plataforma para execução dos scrips](##Plataforma-de-execução)
-- [Primeiros Passos](##Primeiros-Passos)
-- [Mão na Massa](##Mão-na-Massa)
+- [Introdução](#-introdução)
+- [Criação de plataforma para execução dos scrips](#-plataforma-de-execução)
+- [Primeiros Passos](#%EF%B8%8F-primeiros-passos)
+- [Mão na Massa](#-mão-na-massa)
+- [Baixando o arquivo VCF](#baixando-o-arquivo-vcf)
+- [Anotando as variantes com o VEP](#anotando-as-variantes-com-o-vep)
 
 
 ## 📃 Introdução
