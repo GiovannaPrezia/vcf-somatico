@@ -7,6 +7,7 @@ Tópicos:
 - [Primeiros Passos](##Primeiros-Passos)
 - [Mão na Massa](##Mão-na-Massa)
 
+
 ## 📃 Introdução
 Um arquivo VCF (_Variant Call Format_) é um arquivo de dados usado que contém informações de variações de sequências de genes advindos de um DNA que passou pelo processo de sequenciamento de nova geração (NGS). Para o encontro dessas variantes existem diversas ferramentas que podem auxiliar em sua anotação e também associação de suas informações à bancos de dados afim de uma maior compreenção do que se quer estudar/analisar. 
 Para o processamento desses dados, é possível seguir este tutorial com qualquer arquivo VCF que você possua, nós utilizamos como ferramenta suporte o Ensembl Variant Effect Predictor (VEP) para anotação. Mais sobre a ferramenta pode ser encontrado no GitHub da cientista de dados Keren Xu (https://github.com/XUKEREN) no repositório vcfannotatoR https://github.com/XUKEREN/vcfannotatoR).
