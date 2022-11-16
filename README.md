@@ -17,7 +17,7 @@ Para o processamento desses dados, é possível seguir este tutorial com qualque
 ## 💻 Plataforma de execução 
 Antes de mais nada, para o desenvolvimento de uma pipeline é necessário que se utilize uma plataforma que suporte a leitura dos scripts. Neste tutorial foi escolhida a plataforma Google Colab (https://colab.research.google.com/). Através do link pode-se conhecer um pouco mais sobre como utilizar o Colab para a escrita e execução de scripts em Python. 
 - Link para rápida criação de um script no Colab --> https://colab.research.google.com/#create=true
-- Nomeie o título do seu arquivo onde está escrito *Untitled.ipynb* e em seguida você já pode começar o script!
+- Nomeie o título do seu arquivo onde está escrito *Untitled.ipynb* e em seguida você já pode começar o script!.
 
 ## 🚶‍♂️ Primeiros Passos
 
