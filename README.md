@@ -6,8 +6,9 @@ Tópicos:
 - [Criação de plataforma para execução dos scrips](#-plataforma-de-execução)
 - [Primeiros Passos](#%EF%B8%8F-primeiros-passos)
 - [Mão na Massa](#-mão-na-massa)
-- [Baixando o arquivo VCF](#baixando-o-arquivo-vcf)
+- [Baixando arquivos para execução](#baixando-o-arquivo-vcf)
 - [Anotando as variantes com o VEP](#anotando-as-variantes-com-o-vep)
+- [Analisando o resultado com o pandas](#analisando-o-resultado-com-o-pandas)
 
 
 ## 📃 Introdução
@@ -174,6 +175,6 @@ df
 ````
 
 O seu resultado deve ser uma tabela assim:
-![image](https://user-images.githubusercontent.com/99352577/202538596-30f0e0a2-de27-44e5-a18e-c718fa2e34b1.png)
+![image](https://user-images.githubusercontent.com/99352577/202541504-3d507785-6709-49e5-95d9-f95b02576580.png)
 
 
