@@ -97,9 +97,8 @@ O Colab salva seus arquivos em seu próprio disco, a partir desse momento ele de
 
 
 ## 🧬Baixando arquivos para execução
-Aqui no Git estão disponibilizados dois arquivos para teste de execução do tutorial:
+Para o teste de execução do tutorial disponibilizamos um VCF. É necessário fazer o download deste arquivo presente aqui no git:
 
-- Arquivo em FASTA da referência
 - Arquivo em VCF para teste
 
   _1.Vamos começar fazendo o download do arquivo `WP312.filtered.vcf.gz.` no Colab:_
@@ -116,15 +115,20 @@ mkdir dados_vcf
 !mv /content/WP312.filtered.vcf.gz /content/dados_vcf
 ````
 
- _4. Vamos seguir o mesmo passo do downloado do VCF para o download do FASTA:
- 	obs: Desta vez pode ser um processo mais demorado tendo em vista que o arquivo possui 2,9 GB;_
-![image](https://user-images.githubusercontent.com/99352577/202040401-5eb872d4-664c-4f62-8df3-7931dfb2a083.png)
+- Arquivo FASTA da referência
+
+ _4. Também vai ser necessário fazer o download de um arquivo de sequência contendo a referência da espécie de estudo, no caso vamos baixar a ref hg19 humana usando o comando `wget`:
+ 	obs: Desta vez pode ser um processo mais demorado (cerca de 10m) tendo em vista que o arquivo possui 2,9 GB;_
+````
+!wget -c https://data.broadinstitute.org/snowman/hg19/Homo_sapiens_assembly19.fasta
+```` 
 
   _5.Crie um diretório para a referência:_
 ```
 %%bash
-mkdir referencia_fasta/Homo_sapiens_assembly19.fasta 
+mkdir referencia_fasta
 ````
+
   _3. Mova o arquivo VCF para o diretório criado utilizando o comando `mv`, apenas para organização dos dados:_
 ````
 !mv /content/Homo_sapiens_assembly19.fasta  /content/referencia_fasta
@@ -147,15 +151,29 @@ A partir de `--pick` você seleciona aquilo que deseja identificar em seus dados
 
 ````
 %%bash
-/ensembl-vep-105.0/vep  \
+./ensembl-vep-105.0/vep \
   --fork 4 \
   -i /content/dados_vcf/WP312.filtered.vcf.gz \
   -o /content/dados_vcf/WP312.output-vep.vcf.tsv \
-  --dir_cache /content/dados_vcf \
+  --dir_cache /content \
   --fasta /content/referencia_fasta/Homo_sapiens_assembly19.fasta  \
   --cache --offline --assembly GRCh37 --refseq  \
 	--pick --pick_allele --force_overwrite --tab --symbol --check_existing --variant_class --everything --filter_common \
   --fields "Uploaded_variation,Location,Allele,Existing_variation,HGVSc,HGVSp,SYMBOL,Consequence,IND,ZYG,Amino_acids,CLIN_SIG,PolyPhen,SIFT,VARIANT_CLASS,FREQS" \
   --individual all
+  
 ````
+## 🐼Analisando o resultado com o pandas
+Agora utilizaremos o pandas (biblioteca de software criada para a linguagem Python para manipulação e análise de dados) que nos permitira visualizar os dados gerados pelo VEP:
+
+ _- Mova o arquivo VCF para o diretório criado utilizando o comando `mv`, apenas para organização dos dados:_
+````
+tabela = pd.read_csv('/content/dados_vcf/WP312.output-vep.vcf.tsv', sep='\t', skiprows=38)
+df = pd.DataFrame(tabela)
+df
+````
+
+O seu resultado deve ser uma tabela assim:
+![image](https://user-images.githubusercontent.com/99352577/202538596-30f0e0a2-de27-44e5-a18e-c718fa2e34b1.png)
+
 
