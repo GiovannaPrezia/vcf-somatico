@@ -12,10 +12,14 @@ Tópicos:
 
 ## 📃 Introdução
 Um arquivo VCF (_Variant Call Format_) é um arquivo de dados usado que contém informações de variações de sequências de genes advindos de um DNA que passou pelo processo de sequenciamento de nova geração (NGS). Para o encontro dessas variantes existem diversas ferramentas que podem auxiliar em sua anotação e também associação de suas informações à bancos de dados afim de uma maior compreenção do que se quer estudar/analisar. 
-Para o processamento desses dados, é possível seguir este tutorial com qualquer arquivo VCF que você possua, nós utilizamos como ferramenta suporte o Ensembl Variant Effect Predictor (VEP) para anotação. Mais sobre a ferramenta pode ser encontrado no GitHub da cientista de dados Keren Xu (https://github.com/XUKEREN) no repositório vcfannotatoR https://github.com/XUKEREN/vcfannotatoR).
+Para o processamento desses dados, é possível seguir este tutorial com qualquer arquivo VCF que você possua, nós utilizamos como ferramenta suporte o Ensembl Variant Effect Predictor (VEP) para anotação. 
+- Mais sobre a ferramenta pode ser encontrado através dos links:
+  - https://www.ensembl.org/info/docs/tools/vep/index.html 
+  - https://github.com/Ensembl/ensembl-vep
+- Também através do GitHub da cientista de dados Keren Xu (https://github.com/XUKEREN) no repositório vcfannotatoR https://github.com/XUKEREN/vcfannotatoR).
 
 ## 💻 Plataforma de execução 
-Antes de mais nada, para o desenvolvimento de uma pipeline é necessário que se utilize uma plataforma que suporte a leitura dos scripts. Neste tutorial foi escolhida a plataforma Google Colab (https://colab.research.google.com/). Através do link pode-se conhecer um pouco mais sobre como utilizar o Colab para a escrita e execução de scripts em Python. 
+Antes de mais nada, para o desenvolvimento de uma pipeline é necessário que se utilize uma plataforma que suporte a leitura dos scripts. Neste tutorial foi escolhida a plataforma Google Colab (https://colab.research.google.com/). Através do link pode-se conhecer um pouco mais sobre como utilizar o Colab para a escrita e execução de scripts em Python, útil para a execução deste tutorial. 
 - Link para rápida criação de um script no Colab --> https://colab.research.google.com/#create=true
 - Nomeie o título do seu arquivo onde está escrito *Untitled.ipynb* e em seguida você já pode começar o script!.
 
@@ -110,7 +114,31 @@ mkdir dados_vcf
 ````
   
 ## 📝Anotando as variantes com o VEP
-Tudo alinhado, vamos as anotações!
+Tudo alinhado, vamos as anotações! Primeiramente, vamos entender os comandos que utilizaremos:
+Através do link (https://rest.ensembl.org/#VEP) é possível entender os comandos e seus `outputs/saídas`.
+No nosso script:
+ - `fork` : quantos núcleos o Colab vai usar para executar o programa;
+ - `i` : de `input`, é o local onde o programa resgata o arquivo para iniciar a execução;
+ - `o` : de `output`, como o arquivo será salvo no final;
+ - `dir_cache` : é o cache do diretório do arquivo;
+ - `fasta` : resgata o arquivo em `fasta` da referência (baixada anteriormente);
+ - `offline` : possibilidade de execução offline;
+ - `refseq` : código que busca a referência;
+A partir de `--pick` você seleciona aquilo que deseja identificar em seus dados, na tabela das variantes que será gerado a partir do seu VCF. Através dos links inclusos na [Introdução](#-introdução), sobre o programa VEP, você consegue identificar filtros que pode adicionar para a sua análise. 
 
+- Comando exemplo para execução: 
 
+````
+%%bash
+/ensembl-vep-105.0/vep  \
+  --fork 4 \
+  -i /caminho_documento_vcf/nome_documento_vcf.vcf.gz \
+  -o nome_desejado.filtered.vcf.tsv \
+  --dir_cache /caminho_dir_cashe/ \
+  --fasta /caminho_documento_fasta/nome_documento_fasta.fasta \
+  --cache --offline --assembly GRCh37 --refseq  \
+	--pick --pick_allele --force_overwrite --tab --symbol --check_existing --variant_class --everything --filter_common \
+  --fields "Uploaded_variation,Location,Allele,Existing_variation,HGVSc,HGVSp,SYMBOL,Consequence,IND,ZYG,Amino_acids,CLIN_SIG,PolyPhen,SIFT,VARIANT_CLASS,FREQS" \
+  --individual all
+````
 
