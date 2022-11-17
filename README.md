@@ -96,10 +96,13 @@ O Colab salva seus arquivos em seu próprio disco, a partir desse momento ele de
 ![image](https://user-images.githubusercontent.com/99352577/202040299-e9732c77-6e8e-4421-b2a6-10f9793929b0.png)
 
 
-## 🧬Baixando o arquivo VCF
-Agora vamos usar um VCF como exemplo. 
+## 🧬Baixando arquivos para execução
+Aqui no Git estão disponibilizados dois arquivos para teste de execução do tutorial:
 
-  _1.Baixe o arquivo `WP312.filtered.vcf.gz.` no Colab:_
+- Arquivo em FASTA da referência
+- Arquivo em VCF para teste
+
+  _1.Vamos começar fazendo o download do arquivo `WP312.filtered.vcf.gz.` no Colab:_
 
 ![image](https://user-images.githubusercontent.com/99352577/202040401-5eb872d4-664c-4f62-8df3-7931dfb2a083.png)
 
@@ -112,7 +115,21 @@ mkdir dados_vcf
 ````
 !mv /content/WP312.filtered.vcf.gz /content/dados_vcf
 ````
-  
+
+ _4. Vamos seguir o mesmo passo do downloado do VCF para o download do FASTA:
+ 	obs: Desta vez pode ser um processo mais demorado tendo em vista que o arquivo possui 2,9 GB;_
+![image](https://user-images.githubusercontent.com/99352577/202040401-5eb872d4-664c-4f62-8df3-7931dfb2a083.png)
+
+  _5.Crie um diretório para a referência:_
+```
+%%bash
+mkdir referencia_fasta/Homo_sapiens_assembly19.fasta 
+````
+  _3. Mova o arquivo VCF para o diretório criado utilizando o comando `mv`, apenas para organização dos dados:_
+````
+!mv /content/Homo_sapiens_assembly19.fasta  /content/referencia_fasta
+````
+
 ## 📝Anotando as variantes com o VEP
 Tudo alinhado, vamos as anotações! Primeiramente, vamos entender os comandos que utilizaremos:
 Através do link (https://rest.ensembl.org/#VEP) é possível entender os comandos e seus `outputs/saídas`.
@@ -132,10 +149,10 @@ A partir de `--pick` você seleciona aquilo que deseja identificar em seus dados
 %%bash
 /ensembl-vep-105.0/vep  \
   --fork 4 \
-  -i /caminho_documento_vcf/nome_documento_vcf.vcf.gz \
-  -o nome_desejado.filtered.vcf.tsv \
-  --dir_cache /caminho_dir_cashe/ \
-  --fasta /caminho_documento_fasta/nome_documento_fasta.fasta \
+  -i /content/dados_vcf/WP312.filtered.vcf.gz \
+  -o /content/dados_vcf/WP312.output-vep.vcf.tsv \
+  --dir_cache /content/dados_vcf \
+  --fasta /content/referencia_fasta/Homo_sapiens_assembly19.fasta  \
   --cache --offline --assembly GRCh37 --refseq  \
 	--pick --pick_allele --force_overwrite --tab --symbol --check_existing --variant_class --everything --filter_common \
   --fields "Uploaded_variation,Location,Allele,Existing_variation,HGVSc,HGVSp,SYMBOL,Consequence,IND,ZYG,Amino_acids,CLIN_SIG,PolyPhen,SIFT,VARIANT_CLASS,FREQS" \
